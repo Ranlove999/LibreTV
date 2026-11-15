@@ -20,15 +20,90 @@ const SITE_CONFIG = {
     version: '1.0.3'
 };
 
-// API站点配置
+// API站点配置（内置视频源）
 const API_SITES = {
-    testSource: {
-        api: 'https://www.example.com/api.php/provide/vod',
-        name: '空内容测试源',
-        adult: true
+    bfzy: {
+        api: 'https://bfzyapi.com/api.php/provide/vod',
+        name: '暴风资源',
+        adult: false
+    },
+    ftzy: {
+        api: 'https://cj.lziapi.com/api.php/provide/vod',
+        name: '非天资源',
+        adult: false
+    },
+    zdzy: {
+        api: 'https://api.zuidapi.com/api.php/provide/vod',
+        name: '最大资源',
+        adult: false
+    },
+    jyzy: {
+        api: 'https://jyzyapi.com/api.php/provide/vod',
+        name: '金鹰资源',
+        adult: false
+    },
+    hhzy: {
+        api: 'https://hhzyapi.com/api.php/provide/vod',
+        name: '豪华资源',
+        adult: false
+    },
+    huya: {
+        api: 'https://www.huyaapi.com/api.php/provide/vod',
+        name: '虎牙资源',
+        adult: false
+    },
+    jszy: {
+        api: 'https://jszyapi.com/api.php/provide/vod',
+        name: '极速资源',
+        adult: false
+    },
+    plzy: {
+        // 注意：该域名当前启用了 Cloudflare 人机校验，接口可能返回 403
+        api: 'https://p2100.net/api.php/provide/vod',
+        name: '飘零资源',
+        adult: false
+    },
+    ffzy: {
+        api: 'https://cj.ffzyapi.com/api.php/provide/vod',
+        name: '非凡资源',
+        adult: false
+    },
+    mdzy: {
+        api: 'https://www.mdzyapi.com/api.php/provide/vod',
+        name: '魔都资源',
+        adult: false
+    },
+    dyttzy: {
+        api: 'https://caiji.dyttzyapi.com/api.php/provide/vod',
+        name: '电影天堂',
+        adult: false
+    },
+    zy360: {
+        api: 'https://360zy.com/api.php/provide/vod',
+        name: '360资源',
+        adult: false
+    },
+    iqiyizy: {
+        api: 'https://www.iqiyizyapi.com/api.php/provide/vod',
+        name: 'iQIYI资源',
+        adult: false
+    },
+    bdzy: {
+        api: 'https://api.apibdzy.com/api.php/provide/vod',
+        name: '百度资源',
+        adult: false
+    },
+    ffys: {
+        // 注意：该域名目前会跳转到广告页，接口大概率失效，默认未选中
+        api: 'http://ffzy5.tv/api.php/provide/vod',
+        name: '非凡影视',
+        adult: false
     }
     //ARCHIVE https://telegra.ph/APIs-08-12
 };
+
+// 默认选中的内置源（首次加载时使用）
+const DEFAULT_SELECTED_APIS = ['bfzy', 'ffzy', 'dyttzy', 'jyzy', 'hhzy', 'mdzy'];
 
 // 定义合并方法
 function extendAPISites(newSites) {
@@ -38,6 +113,7 @@ function extendAPISites(newSites) {
 // 暴露到全局
 window.API_SITES = API_SITES;
 window.extendAPISites = extendAPISites;
+window.DEFAULT_SELECTED_APIS = DEFAULT_SELECTED_APIS;
 
 
 // 添加聚合搜索的配置选项
